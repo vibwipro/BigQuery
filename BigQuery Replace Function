@@ -1,0 +1,31 @@
+
+CREATE OR REPLACE FUNCTION  `ikea-itsd-ml.test123.replace`(
+  input_expression STRING,
+  replace_characters STRING,
+  substitute_characters STRING) 
+AS (
+  IF(
+      LENGTH(replace_characters) < LENGTH(substitute_characters)
+        OR LENGTH(input_expression) < LENGTH(replace_characters),
+      input_expression,
+      (
+        SELECT
+          STRING_AGG( 
+           	  IFNULL( 
+           	      (
+                    SELECT
+                      ARRAY_CONCAT([tab], SPLIT(substitute_characters, ''))
+                      [SAFE_OFFSET(
+                          (
+                            SELECT IFNULL(MIN(o2) + 1, 0)
+                            FROM UNNEST(SPLIT(replace_characters, '')) AS k
+                            WITH OFFSET o2
+                            WHERE k = tab
+                          ))]
+                  ),
+                  ''), 
+           	  '' ORDER BY f1)
+        FROM UNNEST(SPLIT(input_expression, '')) AS tab
+        WITH OFFSET f1
+      )) 
+);
