@@ -1,4 +1,4 @@
-My table contains some identifiers, call them ID1 and ID2 and the records look like this: Given Over Requireemnt Doc.
+My table contains some identifiers, call them ID1 and ID2 and the records look like this: Given Over Requirement Doc.
  
 Output of above will be like: Given Over Requirement Doc.
  
