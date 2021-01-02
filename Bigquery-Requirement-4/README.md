@@ -1,5 +1,3 @@
-Input Data is :- Given over requireemnt document.
+Requirement : how to implement nexsted IF Else Condition over Biqgery.
 
-
-
-Expected output is :- given over Requirement document.
+Here we have an example to implement same.
