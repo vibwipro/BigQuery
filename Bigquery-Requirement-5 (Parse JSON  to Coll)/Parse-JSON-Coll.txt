@@ -1,0 +1,11 @@
+SELECT id,
+       json_extract_scalar(curSection, '$.secName') as section_name,
+       n_s,
+       json_extract_scalar(curField, '$.fldName') as field_name,
+       json_extract_scalar(curField, '$.age') as field_age,
+       n_c
+ FROM `project.dataset.Json_Data` tbl LEFT JOIN
+       unnest(json_extract_array(tbl.data, '$.sections')
+             ) curSection WITH OFFSET n_s LEFT JOIN
+       unnest(json_extract_array(curSection, '$.fields')
+             ) curField WITH OFFSET n_c;
