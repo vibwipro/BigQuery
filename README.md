@@ -8,7 +8,7 @@
 ### Table of Contents
 Following List of Functions are described here
 
-- [PERCENTILE_CONT](#percentile-count)
+- [8. PERCENTILE_CONT](#percentile-count)
 
 ---
 
@@ -18,7 +18,7 @@ This Bigquery function takes following inputs
   2. Characters which need to be replaced
   3.New characters which need to put on output string.
   
-  ## PERCENTILE_CONT
+  ## 8. BigQuery Function 'PERCENTILE_CONT'
   Input Data:
   ```html
  c1    c2    c3
@@ -38,3 +38,4 @@ A     C     15
 X     Q     12
 X     R     15
  ```
+ We can find SQL Code [here] (https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-8%20(PERCENTILE_CONT-%20function)/PERCENTILE_CONT-Query.sql)
