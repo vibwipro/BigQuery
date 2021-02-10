@@ -7,6 +7,7 @@ This Bigquery function takes following inputs
   
   ## 8. BigQuery Function 'PERCENTILE_CONT'
   Input Data:
+  ```html
  c1    c2    c3
  A     B     12
  A     C     15
@@ -14,7 +15,7 @@ This Bigquery function takes following inputs
  X     P     8
  X     Q     12
  X     R     15
- 
+ ```
 Transformation Logic: I want to select those rows of top contributing (top 50 percent contributor for sum of c3 values, ex: 12 and 15 has contribution more than 50 percent of 12,15 and 8) c2 values for each c1 values.
 
 Output: 
