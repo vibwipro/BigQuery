@@ -8,17 +8,38 @@
 ### Table of Contents
 Following List of Functions are described here
 
+
+- [7. GENERATE_DATE_ARRAY](#generate-date-array)
 - [8. PERCENTILE_CONT](#percentile-count)
 - [9. STRING_AGG](#string-agg)
 
 ---
 
-This Bigquery function takes following inputs
+  ## 7. BigQuery Function 'GENERATE_DATE_ARRAY'
+  Input Data:
+  ```html
+ id    date 
+ x     2021-01-01
+ x     2021-01-03
+ y     2021-01-06
+ y     2021-01-09
+ ```
+> Transformation Logic: We have a requirement to generate new records between 2 dates of same id's. From above give data we need to create output as given below.
+Output:
+  ```html
+ id    date 
+ x     2021-01-01
+ x     2021-01-02
+ x     2021-01-03
+ y     2021-01-06
+ y     2021-01-07
+ y     2021-01-08
+ y     2021-01-09
+ ```
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-7%20(GENERATE_DATE_ARRAY-%20function)/GENERATE_DATE_ARRAY-Query.sql)
 
-  1. Input String
-  2. Characters which need to be replaced
-  3.New characters which need to put on output string.
-  
+---  
+
   ## 8. BigQuery Function 'PERCENTILE_CONT'
   Input Data:
   ```html
@@ -40,6 +61,8 @@ X     Q     12
 X     R     15
  ```
 > We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-8%20(PERCENTILE_CONT-%20function)/PERCENTILE_CONT-Query.sql)
+
+---
 
   ## 9. BigQuery Function 'STRING_AGG'
   
@@ -77,3 +100,5 @@ User 5	1-cola - 2-fries - 3-burger
 User 5	1-cola - 3-burger
  ```
 > We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-9%20(String_Agg-%20function)/String_Agg-Query.sql)
+
+---
