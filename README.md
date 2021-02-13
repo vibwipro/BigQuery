@@ -8,12 +8,73 @@
 ### Table of Contents
 Following List of Functions are described here
 
-
+- [5. UNNEST/JSON_EXTRACT_SCALAR/JSON_EXTRACT_ARRAY](#unnest)
+- [6. OFFSET](#offset)
 - [7. GENERATE_DATE_ARRAY](#generate-date-array)
 - [8. PERCENTILE_CONT](#percentile-count)
 - [9. STRING_AGG](#string-agg)
 
 ---
+
+  ## 5. BigQuery Functions 'UNNEST' & 'JSON_EXTRACT_SCALAR' & 'JSON_EXTRACT_ARRAY'
+  Input Data:
+  ```html
+{
+ "sections": [
+   {
+     "secName": "Flintstones",
+     "fields": [
+       { "fldName": "Fred", "age": 55 },
+       { "fldName": "Barney", "age": 44 }
+     ]
+   },
+   {
+     "secName": "Jetsons",
+     "fields": [
+       { "fldName": "George", "age": 33 },
+       { "fldName": "Elroy", "age": 22 }
+     ]
+   }
+ ]}
+ ```
+> Transformation Logic: We have a requirement to parse JSON record and represent output as given below.
+Output:
+  ```html
+id  | section_num  | section_name | field_num | field_name | field_age
+----+--------------+--------------+-----------+------------+-----------
+1   | 1            | Flintstones  | 1         | Fred       |  55
+1   | 1            | Flintstones  | 2         | Barney     |  44
+1   | 2            | Jetsons      | 1         | George     |  33
+1   | 2            | Jetsons      | 2         | Elroy      |  22
+ ```
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-5%20(Parse%20JSON%20%20to%20Coll)/Parse-JSON-Coll.txt)
+
+
+---
+
+  ## 6. BigQuery Function 'OFFSET'
+  Input Data:
+  ```html
+ id                         Col2 
+[0,1,2,3,4,5,6,7,8]         [3,4,5,6,7,8,9,3,4]
+ ```
+> Transformation Logic: We have a requirement to parse array and represent output as given below.
+Output:
+  ```html
+ id    Col2 
+ 0     3
+ 1     4
+ 2     5
+ 3     6
+ 4     7
+ 5     8
+ 6     9
+ 7     3
+ 8     4
+ ```
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-6%20(OFFSET-%20function)/Function-OFFSET.txt)
+
+--- 
 
   ## 7. BigQuery Function 'GENERATE_DATE_ARRAY'
   Input Data:
