@@ -8,11 +8,61 @@
 ### Table of Contents
 Following List of Functions are described here
 
+- [2. LEAD/ST_DISTANCE/ST_GEOGPOINT](#lead-geogpoint)
+- [3. PARSE-JSON](#parse-json)
+- [4. NESTED IF ELSE](#nested-if-else)
 - [5. UNNEST/JSON_EXTRACT_SCALAR/JSON_EXTRACT_ARRAY](#unnest)
 - [6. OFFSET](#offset)
 - [7. GENERATE_DATE_ARRAY](#generate-date-array)
 - [8. PERCENTILE_CONT](#percentile-count)
 - [9. STRING_AGG](#string-agg)
+
+---
+  ## 2. BigQuery FUNCTIONS 'LEAD'/'ST_DISTANCE'/'ST_GEOGPOINT'
+  Input Data:
+  ```html
+objectid, id, DateAndTime,             latitude ,     longitude
+--------------------------------------------------------------------
+ 1,        1, '2002-11-26T12:00:00', 38.82551095,  -109.9709871 
+ 2,        1, '2002-11-29T13:00:00', 38.541137,  -109.677575
+ 3,        2, '2002-11-03T10:00:00', 38.550676,  -109.901774
+ 4,        2, '2002-11-04T10:00:00', 38.53689,  -109.683531
+ 5,        2, '2002-11-05T10:00:00', 38.45689,  -109.683531
+ ```
+> Transformation Logic: is to calculate the distance between sequential points and partitioned by the ID number in BigQuery. Based on the above table, we want the query to calculate the distance between ObjectID 1 & 2, and then the distance between ObjectID 3 & 4 and then 4 & 5.
+
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-2/biqquery.sql)
+
+---
+
+  ## 3. BigQuery Parse JSON
+  Input Data:
+  ```json
+ [{"Value":"123","Code":"A"},{"Value":"000","Code":"B"}]
+  {"Value":"456","Code":"A"}
+ [{"Value":"123","Code":"A"},{"Value":"789","Code":"C"},{"Value":"000","Code":"B"}]
+  {"Value":"Z","Code":"A"}
+ ```
+> Transformation Logic: We have a requirement to parse JSON record and represent output as given below.
+Output:
+  ```html
+    | Value        | Code         | 
+----+--------------+--------------+
+1   | 123          | A            |
+2   | 000          | B            | 
+3   | 456          | A            |
+4   | 123          | A            |
+... So on 
+```
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-3/biqquery.sql)
+
+---
+
+## 4. BigQuery Functions NESTED'IF-ELSE'
+ 
+> Transformation Logic: We have a requirement to calculate different conditions, based on different conditions we need to take different actions.
+
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-4/Nested-IF-Else.SQL)
 
 ---
 
