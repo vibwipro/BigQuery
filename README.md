@@ -8,6 +8,7 @@
 ### Table of Contents
 Following List of Functions are described here
 
+- [1. ARRAY/ARRAY_TO_STRING](#array-to-string)
 - [2. LEAD/ST_DISTANCE/ST_GEOGPOINT](#lead-geogpoint)
 - [3. PARSE-JSON](#parse-json)
 - [4. NESTED IF ELSE](#nested-if-else)
@@ -18,6 +19,53 @@ Following List of Functions are described here
 - [9. STRING_AGG](#string-agg)
 
 ---
+
+  ## 1. BigQuery FUNCTION 'ARRAY'/'ARRAY_TO_STRING'
+  Input Data:
+  ```html
+    | ID1         | ID2          | 
+----+--------------+--------------+
+1   | 01          | 1            |
+2   | 01          | 1            | 
+3   | 01          | 2            |
+4   | 01          | 2            |
+5   | 01          | 2            |
+6   | 02          | 2            | 
+7   | 02          | 2            |
+8   | 02          | 3            |
+9   | 02          | 3            |
+10  | 02          | 3            |
+... 
+nth | 03          | 4            |
+n+1 | 04          | 5            |
+n+2 | 05          | 6            |
+n+3 | 06          | 7            |
+ ```
+> Transformation Logic: Link ID2 = 3 to ID2 = 2 via ID1 = 02 and then ID1 = 02 to ID2 = 01 via ID2 = 2 in the first part of the example table. Second part is single entry.
+Output:
+  ```html
+    | ID1         | ID2          | ID_Comp
+----+--------------+--------------+---------
+1   | 01          | 1            | 01_02
+2   | 01          | 1            | 01_02
+3   | 01          | 2            | 01_02
+4   | 01          | 2            | 01_02
+5   | 01          | 2            | 01_02
+6   | 02          | 2            | 01_02
+7   | 02          | 2            | 01_02
+8   | 02          | 3            | 01_02
+9   | 02          | 3            | 01_02
+10  | 02          | 3            | 01_02
+... 
+nth | 03          | 4            | 03
+n+1 | 04          | 5            | 04
+n+2 | 05          | 6            | 05
+n+3 | 06          | 7            | 06
+```
+> We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-1/biqquery.sql)
+
+---
+
   ## 2. BigQuery FUNCTIONS 'LEAD'/'ST_DISTANCE'/'ST_GEOGPOINT'
   Input Data:
   ```html
