@@ -17,6 +17,7 @@ Following List of Functions are described here
 - [7. GENERATE_DATE_ARRAY](#generate-date-array)
 - [8. PERCENTILE_CONT](#percentile-count)
 - [9. STRING_AGG](#string-agg)
+- [10. STRUCT](#struct)
 
 ---
 
@@ -261,3 +262,29 @@ User 5	1-cola - 3-burger
 > We can find SQL Code [here](https://github.com/vibwipro/BigQuery/blob/main/Bigquery-Requirement-9%20(String_Agg-%20function)/String_Agg-Query.sql)
 
 ---
+
+  ## 10. BigQuery Functions 'STRUCT'
+  Input Data:
+  ```html
+id  | datetime               | ACTION | result    | dest
+----+------------------------+--------+-----------+------------+-----------
+1   | 2020-12-06 21:00:00    | 100    | failure   | dsde424-lx7718.cccxx.com
+2   | 2020-12-06 22:00:00    | 101    | Success   | dsabc654-lx6510.cccxx.com
+3   | 2020-12-06 23:00:00    | 102    | Process   | dsdtre4-lx985g0.cccxx.com
+
+ ```
+> Transformation Logic: We have a transform Flatfile to an array.
+Output:
+  ```html
+id  | datetime               | key_values.key | key_values.value
+----+------------------------+----------------+-----------+------------+-----------
+1   | 2020-12-06 21:00:00    | Action         | 100
+                             | result         | failure
+                             | dest           | dsde424-lx7718.cccxx.com
+2   | 2020-12-06 22:00:00    | Action         | 101
+                             | result         | Success
+                             | dest           | dsabc654-lx6510.cccxx.com
+3   | 2020-12-06 23:00:00    | Action         | 102
+                             | result         | Process
+                             | dest           | dsdtre4-lx985g0.cccxx.com
+ ```
