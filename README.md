@@ -273,7 +273,7 @@ id  | datetime               | ACTION | result    | dest
 3   | 2020-12-06 23:00:00    | 102    | Process   | dsdtre4-lx985g0.cccxx.com
 
  ```
-> Transformation Logic: We have a transform Flatfile to an array.
+> Transformation Logic: We have to transform Flatfile to an array as given below.
 Output:
   ```html
 id  | datetime               | key_values.key | key_values.value
